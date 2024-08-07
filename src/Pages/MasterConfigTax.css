@@ -1,0 +1,41 @@
+.MainContentTax{
+    width: 60%;
+  }
+  
+  .ErrorTextClass{
+    color:red;
+  
+  }
+  
+.percentcolumn{
+  width: 10px;;
+}
+
+
+  .imgClass{
+    cursor: pointer;
+    width: 20px;
+}
+.imgInsertClass{
+    cursor: pointer;
+    width: 40px;
+}
+.custom-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid gray; /* Outer border for each cell */
+  padding: 8px;
+  text-align: left;
+}
+
+.custom-table tr {
+  border: 1px solid gray; /* Inner border for rows */
+}
+
+.custom-table th {
+  background-color: #f2f2f2;
+}

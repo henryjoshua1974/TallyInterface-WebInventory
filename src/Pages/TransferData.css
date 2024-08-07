@@ -1,0 +1,33 @@
+.clsdtp{
+    display: flex;
+    width: 100%;
+   
+}
+
+.clsdtpsub{
+    width: 100%;
+
+}
+
+.classlistbox{
+    border: 2px solid lightgray; /* Border around the div */
+    padding: 0px 10px;          /*Optional padding inside the div  */
+    height: 100px;          /* Fixed height for the div */
+    /* width: 50%; */
+    overflow-y: scroll;     /* Enable vertical scrolling */
+}
+
+.ErrorTextClass{
+    color:red;
+
+}
+.MessageTextClass{
+    color:green;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.MainContentTransferData{
+    width: 50%;
+    /* height: 100vh; */
+  
+  }
