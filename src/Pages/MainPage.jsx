@@ -53,9 +53,9 @@ export default function MainPage() {
         </div>
         <div className="middle-container">{renderContent()}</div>
 
-        {/* <div className="right-container">
+        <div className="right-container">
           <h1>right container</h1>
-        </div> */}
+        </div>
 
       </div>
     </div>
