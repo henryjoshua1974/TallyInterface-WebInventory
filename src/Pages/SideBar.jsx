@@ -1,15 +1,19 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./SideBar.css";
-
+import imgCategory from "../assets/menuimages/category.png";
+import imgSupplier from "../assets/menuimages/supplier.png";
+import imgTax from "../assets/menuimages/tax.png";
+import imgTaxStructure from "../assets/menuimages/taxstructure.png";
+import imgCategoryCostCenter from "../assets/menuimages/categorycostcenter.png";
+import imgPropertyCostCenter from "../assets/menuimages/propertycostcenter.png";
+import imgDataTransfer from "../assets/menuimages/datatransfer.png";
+import imgGeneralSettings from "../assets/menuimages/generalsettings.png";
 const Sidebar = ({ setActiveComponent }) => {
   const [selectedButtonCode, setselectedButtonCode] = useState("");
 
-
   useEffect(() => {
-  setselectedButtonCode("1");
+    setselectedButtonCode("1");
   }, []);
-
-
 
   return (
     <div className="sidebar">
@@ -22,15 +26,27 @@ const Sidebar = ({ setActiveComponent }) => {
           <div className="contentdiv">
             <div>&nbsp;</div>
             <div className="buttondiv">
-              <button
-                className={selectedButtonCode == "1" ? "selected" : ""}
-                onClick={() => {
-                  setselectedButtonCode("1");
-                  setActiveComponent("TransferTransactionData");
-                }}
+              <div
+                className={
+                  selectedButtonCode == "1" ? "selectedimgdiv" : "imgbuton"
+                }
               >
-                Transfer Data
-              </button>
+                <img
+                  src={imgDataTransfer}
+                  alt="Logo"
+                  className="sidebar-image"
+                />
+
+                <button
+                  className={selectedButtonCode == "1" ? "selected" : ""}
+                  onClick={() => {
+                    setselectedButtonCode("1");
+                    setActiveComponent("TransferTransactionData");
+                  }}
+                >
+                  Transfer Data
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -42,70 +58,142 @@ const Sidebar = ({ setActiveComponent }) => {
           </div>
           <div className="contentdiv">
             <div>&nbsp;</div>
+
             <div className="buttondiv">
-              <button
-                className={selectedButtonCode == "5" ? "selected" : ""}
-                onClick={() => {
-                  setselectedButtonCode("5");
-                  setActiveComponent("MasterConfigCategory");
-                }}
+              {/* <div className="imgbuton"> */}
+              <div
+                className={
+                  selectedButtonCode == "5" ? "selectedimgdiv" : "imgbuton"
+                }
               >
-                Category
-              </button>
-              <button
-                className={selectedButtonCode == "6" ? "selected" : ""}
-                onClick={() => {
-                  setselectedButtonCode("6");
-                  setActiveComponent("MasterConfigSupplier");
-                }}
+                <img src={imgCategory} alt="Logo" className="sidebar-image" />
+                <button
+                  className={selectedButtonCode == "5" ? "selected" : ""}
+                  onClick={() => {
+                    setselectedButtonCode("5");
+                    setActiveComponent("MasterConfigCategory");
+                  }}
+                >
+                  Category
+                </button>
+              </div>
+
+              <div
+                className={
+                  selectedButtonCode == "6" ? "selectedimgdiv" : "imgbuton"
+                }
               >
-                Supplier
-              </button>
-              <button
-                className={selectedButtonCode == "7" ? "selected" : ""}
-                onClick={() => {
-                  setselectedButtonCode("7");
-                  setActiveComponent("MasterConfigTax");
-                }}
+                <img src={imgSupplier} alt="Logo" className="sidebar-image" />
+                <button
+                  className={selectedButtonCode == "6" ? "selected" : ""}
+                  onClick={() => {
+                    setselectedButtonCode("6");
+                    setActiveComponent("MasterConfigSupplier");
+                  }}
+                >
+                  Supplier
+                </button>
+              </div>
+              <div
+                className={
+                  selectedButtonCode == "7" ? "selectedimgdiv" : "imgbuton"
+                }
               >
-                Tax
-              </button>
-              <button
-                className={selectedButtonCode == "8" ? "selected" : ""}
-                onClick={() => {
-                  setselectedButtonCode("8");
-                  setActiveComponent("MasterConfigTaxStructure");
-                }}
+                <img src={imgTax} alt="Logo" className="sidebar-image" />
+                <button
+                  className={selectedButtonCode == "7" ? "selected" : ""}
+                  onClick={() => {
+                    setselectedButtonCode("7");
+                    setActiveComponent("MasterConfigTax");
+                  }}
+                >
+                  Tax
+                </button>
+              </div>
+              <div
+                className={
+                  selectedButtonCode == "8" ? "selectedimgdiv" : "imgbuton"
+                }
               >
-                Tax Structure
-              </button>
-              <button
-                className={selectedButtonCode == "9" ? "selected" : ""}
-                onClick={() => {
-                  setselectedButtonCode("9");
-                  setActiveComponent("MasterConfigPropertyCostCenter");
-                }}
+                <img
+                  src={imgTaxStructure}
+                  alt="Logo"
+                  className="sidebar-image"
+                />
+
+                <button
+                  className={selectedButtonCode == "8" ? "selected" : ""}
+                  onClick={() => {
+                    setselectedButtonCode("8");
+                    setActiveComponent("MasterConfigTaxStructure");
+                  }}
+                >
+                  Tax Structure
+                </button>
+              </div>
+              <div
+                className={
+                  selectedButtonCode == "9" ? "selectedimgdiv" : "imgbuton"
+                }
               >
-                Property Cost Center
-              </button>
-              <button
-                className={selectedButtonCode == "10" ? "selected" : ""}
-                onClick={() => {
-                  setselectedButtonCode("10");
-                  setActiveComponent("MasterConfigCategoryCostCenter");
-                }}
+                <img
+                  src={imgPropertyCostCenter}
+                  alt="Logo"
+                  className="sidebar-image"
+                />
+
+                <button
+                  className={selectedButtonCode == "9" ? "selected" : ""}
+                  onClick={() => {
+                    setselectedButtonCode("9");
+                    setActiveComponent("MasterConfigPropertyCostCenter");
+                  }}
+                >
+                  Property Cost Center
+                </button>
+              </div>
+              <div
+                className={
+                  selectedButtonCode == "10" ? "selectedimgdiv" : "imgbuton"
+                }
               >
-                Category Cost Center
-              </button>
-              <button
-                className={selectedButtonCode == "11" ? "selected" : ""}
-                onClick={() => {
-                  setselectedButtonCode("11");
-                  setActiveComponent("MasterConfigSettings");
-                }}
+                <img
+                  src={imgCategoryCostCenter}
+                  alt="Logo"
+                  className="sidebar-image"
+                />
+
+                <button
+                  className={selectedButtonCode == "10" ? "selected" : ""}
+                  onClick={() => {
+                    setselectedButtonCode("10");
+                    setActiveComponent("MasterConfigCategoryCostCenter");
+                  }}
+                >
+                  Category Cost Center
+                </button>
+              </div>
+
+              <div
+                className={
+                  selectedButtonCode == "11" ? "selectedimgdiv" : "imgbuton"
+                }
               >
-                General Settings
-              </button>
+                <img
+                  src={imgGeneralSettings}
+                  alt="Logo"
+                  className="sidebar-image"
+                />
+                <button
+                  className={selectedButtonCode == "11" ? "selected" : ""}
+                  onClick={() => {
+                    setselectedButtonCode("11");
+                    setActiveComponent("MasterConfigSettings");
+                  }}
+                >
+                  General Settings
+                </button>
+              </div>
             </div>
           </div>
         </div>

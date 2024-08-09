@@ -57,6 +57,7 @@ function TransferData() {
   const handleOrganizationDropdownChange = async (event) => {
     const selectedValue = event.target.value;
     setSelectedOrganization(selectedValue);
+    setPropertyOptions([]);
 
     if (selectedValue) {
       try {
@@ -221,7 +222,7 @@ function TransferData() {
 
             <label htmlFor="dropdownOrganization" className="form-label">Organization</label>
             <select id="dropdownOrganization" className="form-select" onChange={handleOrganizationDropdownChange}>
-              <option value="" >Select an option</option>
+              <option value="" >Select the Organization</option>
               {publicOrganization.map((option) => (
                 <option key={option.organizationId} value={option.organizationId}>{option.organizationName}</option>
               ))}
@@ -241,7 +242,7 @@ function TransferData() {
                       checked={selectedProperty.includes(item.propertyCode)}
                       onChange={handleCheckboxChange}
                     />
-                    {item.propertyName}
+                    &nbsp;{item.propertyName}
                   </label>
                 </div>
               ))}

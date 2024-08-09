@@ -8,9 +8,7 @@
 .sidebar button {
   background: none;
   border: none;
-    /* color: white; */
   color:black;
-  /* padding: 15px 20px; */
   padding: 5px ;
   text-align: left;
   width: 100%;
@@ -22,9 +20,7 @@
 .sidebar label {
   background: rgb(217, 217, 217);
   border: none;
-    /* color: white; */
   color:black;
-  /* padding: 15px 20px; */
   padding: 5px ;
   text-align: left;
   width: 100%;
@@ -34,11 +30,10 @@
 
 
 
-.sidebar button:hover {
-  /* background-color: #575757; */
+/* .sidebar button:hover {
   background-color:rgb(211,227,253);
   border-radius: 10px;
-}
+} */
 
 .sidebar button.selected {
   background-color:rgb(236,239,247);
@@ -51,10 +46,40 @@
 .contentdiv{
     display: flex;
 }
-.contentdiv1{
-  display: flex;
-}
 
 .buttondiv{
   width: 100%;
+  
 }
+.imgbuton{
+  display: flex;
+  flex-direction: row; 
+  align-items: center; /* Vertically center items */
+   
+}
+.sidebar-image {
+  max-width: 20px; /* Adjust image size as needed */
+  height: auto;
+  margin-right: 2px; /* Space between image and button */
+  margin-left:10px;
+}
+
+
+.imgbuton:hover {
+  background-color:rgb(211,227,253);
+  border-radius: 10px;
+}
+
+
+.selectedimgdiv {
+  display: flex;
+  flex-direction: row; 
+  align-items: center; /* Vertically center items */
+
+  background-color:rgb(236,239,247);
+
+  border-radius: 5px;
+  color:black;
+  font-weight: bold;
+}
+
