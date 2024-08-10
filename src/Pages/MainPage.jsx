@@ -45,6 +45,8 @@ export default function MainPage() {
   //Newly Added Code Ends
 
   return (
+    
+    
     <div className="MainContainer">
       <TitleBar />
       <div className="MainDiv">
@@ -59,5 +61,7 @@ export default function MainPage() {
 
       </div>
     </div>
+
+
   );
 }

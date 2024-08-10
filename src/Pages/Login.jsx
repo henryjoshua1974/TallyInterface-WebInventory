@@ -4,7 +4,7 @@ import MainPage from './MainPage';
 import { useNavigate } from 'react-router-dom';
 import MyContext from '../Context/ContextDetails';
 import config from '../config/config.jsx';
-import promisicon from '../assets/promisICO.ico'
+import promisicon from '../assets/promisICO.png'
 
 
 

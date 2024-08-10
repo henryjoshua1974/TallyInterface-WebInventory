@@ -1,39 +1,63 @@
-import React,{useContext} from 'react';
-import './TitleBar.css'; // Create this file for styling
-import imgLogo from '../assets/promisICO.ico'
-import { useNavigate } from 'react-router-dom';
-import MyContext from '../Context/ContextDetails';
+import React, { useContext, useState, useRef } from "react";
+import "./TitleBar.css"; // Create this file for styling
+import imgLogo from "../assets/promisICO.png";
+import imgUserLogin from "../assets/userlogin.png";
+
+import { useNavigate } from "react-router-dom";
+import MyContext from "../Context/ContextDetails";
 
 const TitleBar = () => {
   const navigate = useNavigate();
-  const {publicLoginName} = useContext(MyContext);
-  const {assignPublicKey}= useContext(MyContext);
-  const {assignLoginName}= useContext(MyContext);
-  
-  const ProcessLogin=()=> {
-    assignPublicKey('');
-    
-    assignLoginName('')
-    navigate(`/`);
-  }
+  const { publicLoginName } = useContext(MyContext);
+  const { assignPublicKey } = useContext(MyContext);
+  const { assignLoginName } = useContext(MyContext);
 
-  
+  const [showMenu, setShowMenu] = useState(false);
+  const handleMouseEnter = () => {
+    console.log("mouseenter");
+    setShowMenu(true);
+  };
+
+  const handleMouseLeave = () => {
+    console.log("mouseleave");
+    setShowMenu(false);
+  };
+
+  const ProcessLogin = () => {
+    assignPublicKey("");
+
+    assignLoginName("");
+    navigate(`/`);
+  };
+
   return (
     <div className="title-bar">
       <div className="left-section">
         <img src={imgLogo} alt="Logo" className="logo" />
-        
-        <div className="options">
-        <label className="titlelabel">Lucid Tally Interface</label>
-          {/* <a href="#configuration">Configuration</a>
-          <a href="#reports">Reports</a> */}
-        </div>
+        {/* <div className="titlelabel">Tally Interface</div> */}
+        <h5>Tally Interface</h5>
       </div>
+
       <div className="right-section">
-        {/* <button className="login-button" onClick={ProcessLogin}>Logout</button> */}
-        <div className="titlelabel">{publicLoginName}</div>
-        <span>&nbsp;&nbsp;&nbsp;</span>
-        <a className="login-link" onClick={ProcessLogin}> Logout </a>
+
+        <div className="loginimagediv"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <img src={imgUserLogin} alt="Logo" className="loginlogo" />
+
+          {showMenu && (
+            <div className="menudiv">
+
+              <ul className="ulstyle">
+                <li >
+                <button className="logoutbutton" onClick={ProcessLogin}>Logout {publicLoginName}</button>
+                </li>
+               
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
