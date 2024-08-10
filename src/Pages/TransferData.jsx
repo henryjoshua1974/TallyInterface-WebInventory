@@ -24,19 +24,7 @@ function TransferData() {
   const [errorText, setErrorText] = useState('');
   const [messageText, setMessageText] = useState('');
   const [showMessageTextFlag, setShowMessageTextFlag] = useState(false);
-  const navigate = useNavigate();
-
-  const handleExpiry = () => {
-    if (publicKey == '' || publicOrganization == '')
-      navigate(`/`);
-
-  }
-
-  useEffect(() => {
-    handleExpiry();
-  }, [publicKey]); // Only re-run the effect if count changes
-
-
+ 
 
   // Handle change event
   const handleCheckboxChange = (event) => {

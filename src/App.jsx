@@ -19,8 +19,9 @@ function App() {
         <BrowserRouter>
         {/* <TitleBar /> */}
           <Routes>
-            <Route path='/' element={<Login />} />
-            <Route path='/MainPage' element={<MainPage  />} />
+          <Route path='/' element={<Login />} />
+          <Route path='/Login' element={<Login />} />
+          <Route path='/MainPage' element={<MainPage  />} />
             <Route path='*' element={<NoPageFound />} />
 
           </Routes>

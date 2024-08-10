@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import MyContext from "../Context/ContextDetails";
 import "./MainPage.css";
 import Sidebar from "./SideBar";
@@ -11,6 +11,7 @@ import MasterConfigCategoryCostCenter from "./MasterConfigCategoryCostCenter";
 import MasterConfigPropertyCostCenter from "./MasterConfigPropertyCostCenter";
 import MasterConfigTax from "./MasterConfigTax";
 import MasterConfigSettings from "./MasterConfigSettings";
+import { useNavigate } from 'react-router-dom';
 
 export default function MainPage() {
   const [value, setValue] = React.useState(0);
@@ -18,6 +19,24 @@ export default function MainPage() {
   const [activeComponent, setActiveComponent] = useState(
     "TransferTransactionData"
   );
+
+
+// Handling Page Expiry
+  const navigate = useNavigate();
+
+  const handleExpiry = () => {
+    if (publicKey == '' )
+      navigate(`/`);
+
+  }
+
+  useEffect(() => {
+    handleExpiry();
+  }, [publicKey]); 
+// Handling Page Expiry
+
+
+
 
   const renderContent = () => {
     switch (activeComponent) {
