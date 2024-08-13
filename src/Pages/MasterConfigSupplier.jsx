@@ -15,6 +15,7 @@ const MasterConfigSupplier = () => {
   const [LedgerName, setLedgerName] = useState("");
   const [enableErrorTextFlag, setenableErrorTextFlag] = useState(false);
   const [errorText, setErrorText] = useState('');
+  const [enableSuccessTextFlag, setenableSuccessTextFlag] = useState(false);
 
   const apiurl =
     config.apiUrl.charAt(config.apiUrl.length - 1) != "/"
@@ -26,7 +27,7 @@ const MasterConfigSupplier = () => {
     setLedgerName('');
     setSelectedSupplier(selectedValue);
     setenableErrorTextFlag(false);
-    
+    setenableSuccessTextFlag(false)
     
     if (selectedValue==''){
       return;
@@ -90,7 +91,8 @@ const MasterConfigSupplier = () => {
     setLedgerName('');
     setSelectedOrganization(selectedValue);
     setenableErrorTextFlag(false);
-    
+    setenableSuccessTextFlag(false)
+
     if (selectedValue) {
       try {
         const response = await fetch(
@@ -122,6 +124,8 @@ const MasterConfigSupplier = () => {
     
 
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false)
+
     if (selectedSupplier == '') {
       setenableErrorTextFlag(true);
       setErrorText('Must Select the Supplier Name')
@@ -164,6 +168,10 @@ const MasterConfigSupplier = () => {
       
       setenableErrorTextFlag(true);
       setErrorText(data.message)
+      if (data.errorCode==0){
+        setenableSuccessTextFlag(true)
+        setErrorText("Data Updated Successfully")
+      }
 
       
     } catch (error) {
@@ -248,13 +256,12 @@ const MasterConfigSupplier = () => {
               ))}
             </select>
           </div>
-
           <br />
           <button className="btn btn-primary" type="submit">
             Submit
           </button>
           <br />
-          {enableErrorTextFlag && <label className="ErrorTextClass">{errorText}</label>}
+          {enableErrorTextFlag && <label className={(enableSuccessTextFlag)?"SuccessTextClass":"ErrorTextClass"}>{errorText}</label>}
         </form>
       </div>
     </div>

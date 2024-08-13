@@ -4,46 +4,13 @@
 
 .ErrorTextClass{
   color:red;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
 
+.SuccessTextClass{
+  color:green;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-/* .form-container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-   */
-  /* select, input, button {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-  }
-   */
-  /* button {
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-  } */
-  
-  /* button:hover {
-    background-color: #0056b3;
-  } */
+}
 
-  /* .FormDiv{
-  width: 50%;
- 
-  
-  align-items: center;   
-} */

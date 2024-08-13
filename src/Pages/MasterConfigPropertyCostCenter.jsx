@@ -14,6 +14,7 @@ const MasterConfigPropertyCostCenter = () => {
   const [selectedPrimaryCostPropertyName, setSelectedPrimaryCostPropertyName] = useState("");
   const [enableErrorTextFlag, setenableErrorTextFlag] = useState(false);
   const [errorText, setErrorText] = useState("");
+  const [enableSuccessTextFlag, setenableSuccessTextFlag] = useState(false);
 
   const apiurl =
     config.apiUrl.charAt(config.apiUrl.length - 1) != "/"
@@ -26,6 +27,7 @@ const MasterConfigPropertyCostCenter = () => {
     setSelectedPrimaryCostPropertyName("");
     setSelectedProperty(selectedValue);
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false);
 
     if (selectedValue == "") {
       return;
@@ -81,6 +83,7 @@ const MasterConfigPropertyCostCenter = () => {
     setLedgerName("");
     setSelectedOrganization(selectedValue);
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false)
 
     if (selectedValue) {
       try {
@@ -112,6 +115,7 @@ const MasterConfigPropertyCostCenter = () => {
     e.preventDefault();
 
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false);
 
     if (selectedProperty == "") {
       setenableErrorTextFlag(true);
@@ -157,6 +161,12 @@ const MasterConfigPropertyCostCenter = () => {
 
       setenableErrorTextFlag(true);
       setErrorText(data.message);
+      if (data.errorCode==0){
+        setenableSuccessTextFlag(true)
+        setErrorText("Data Updated Successfully")
+      }
+
+
     } catch (error) {
       // console.error("Error fetching options:", error);
     } finally {
@@ -240,10 +250,10 @@ const MasterConfigPropertyCostCenter = () => {
           <button className="btn btn-primary" type="submit">
             Submit
           </button>
-          {/* <br /> */}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br />
+          
           {enableErrorTextFlag && (
-            <label className="ErrorTextClass">{errorText}</label>
+            <label className={(enableSuccessTextFlag)?"SuccessTextClass":"ErrorTextClass"}>{errorText}</label>
           )}
           <br />
           <br />

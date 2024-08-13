@@ -1,0 +1,18 @@
+.MainContentPropertyCostCenter{
+    width: 60%;
+  }
+  
+
+.ErrorTextClass{
+    color:red;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
+  }
+  
+  .SuccessTextClass{
+    color:green;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
+  }
+  
+  

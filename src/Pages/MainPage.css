@@ -2,12 +2,14 @@
 .MainContainer{
   height: 100vh;
   overflow-y: hidden;
-  /* padding-right: 17px; */
+  background-color: rgb(246,248,252);
+  
 }
 
 .MainDiv {
   display: flex;
   height: 100%;
+  
 }
 
 .left-container {
@@ -32,6 +34,9 @@
   flex-wrap: wrap;
   align-items: flex-start;
 
+
+  border-radius: 30px;
+  background-color: white
 }
 
 .right-container {

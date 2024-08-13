@@ -23,6 +23,7 @@ const MasterConfigSettings = () => {
   ]);
   const [enableErrorTextFlag, setenableErrorTextFlag] = useState(false);
   const [errorText, setErrorText] = useState("");
+  const [enableSuccessTextFlag, setenableSuccessTextFlag] = useState(false);
 
   const apiurl =
     config.apiUrl.charAt(config.apiUrl.length - 1) != "/"
@@ -39,6 +40,7 @@ const MasterConfigSettings = () => {
     const selectedValue = event.target.value;
     setSelectedTransferType(selectedValue);
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false)
   };
 
   const fetchCheckTaxDetailsbyDefault = async (objSelectedProperty) => {
@@ -87,6 +89,7 @@ const MasterConfigSettings = () => {
     setSelectedProperty(selectedValue);
     setSelectedTransferType("");
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false)
 
     const jsonData = {
       PropertyCode: selectedValue,
@@ -130,8 +133,10 @@ const MasterConfigSettings = () => {
 
   const handleOrganizationDropdownChange = async (event) => {
     const selectedValue = event.target.value;
+    setSelectedTransferType("");
     setSelectedOrganization(selectedValue);
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false)
 
     if (selectedValue) {
       try {
@@ -190,6 +195,12 @@ const MasterConfigSettings = () => {
       const data = await response.json();
       setenableErrorTextFlag(true);
       setErrorText(data.message);
+      if (data.errorCode==0){
+        setenableSuccessTextFlag(true)
+        setErrorText("Data Updated Successfully")
+      }
+
+
     } catch (error) {
       // console.error("Error fetching options:", error);
       setTaxOptions([]);
@@ -202,6 +213,7 @@ const MasterConfigSettings = () => {
     e.preventDefault();
 
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false)
 
     if (selectedProperty == "") {
       setenableErrorTextFlag(true);
@@ -338,10 +350,9 @@ const MasterConfigSettings = () => {
           <button className="btn btn-primary" type="submit">
             Submit
           </button>
-          {/* <br /> */}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br />
           {enableErrorTextFlag && (
-            <label className="ErrorTextClass">{errorText}</label>
+            <label className={(enableSuccessTextFlag)?"SuccessTextClass":"ErrorTextClass"}>{errorText}</label>
           )}
           <br />
           <br />

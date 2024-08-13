@@ -17,6 +17,7 @@ const MasterConfigTaxStructure = () => {
   const [LedgerName, setLedgerName] = useState("");
   const [enableErrorTextFlag, setenableErrorTextFlag] = useState(false);
   const [errorText, setErrorText] = useState('');
+  const [enableSuccessTextFlag, setenableSuccessTextFlag] = useState(false);
 
   const apiurl =
     config.apiUrl.charAt(config.apiUrl.length - 1) != "/"
@@ -29,6 +30,7 @@ const MasterConfigTaxStructure = () => {
     setSelectedTaxStructure(selectedValue);
 
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false);
 
     if (selectedValue == "") {
       return;
@@ -82,12 +84,11 @@ const MasterConfigTaxStructure = () => {
     const selectedValue = event.target.value;
     setSelectedTallyHead("");
     setSelectedProperty(selectedValue);
-
+    setLedgerName('');
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false);
 
-    if (selectedValue == "") {
-      return;
-    }
+
     const jsonData = {
       PropertyCode: selectedValue,
     };
@@ -135,10 +136,12 @@ const MasterConfigTaxStructure = () => {
 
   const handleOrganizationDropdownChange = async (event) => {
     const selectedValue = event.target.value;
+    setLedgerName('');
     setSelectedTallyHead('');
     setSelectedOrganization(selectedValue);
     setenableErrorTextFlag(false);
-    
+    setenableSuccessTextFlag(false);
+
     if (selectedValue) {
       try {
         const response = await fetch(
@@ -162,6 +165,7 @@ const MasterConfigTaxStructure = () => {
       }
     } else {
       setPropertyOptions([]); // Clear options if no valid selection
+      setTaxStructureOptions([]);
     }
   };
 
@@ -169,6 +173,7 @@ const MasterConfigTaxStructure = () => {
     e.preventDefault();
     
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false);
 
     if (selectedProperty == '') {
       setenableErrorTextFlag(true);
@@ -219,7 +224,12 @@ const MasterConfigTaxStructure = () => {
       // alert(data.message);
       setenableErrorTextFlag(true);
       setErrorText(data.message)
+      if (data.errorCode==0){
+        setenableSuccessTextFlag(true)
+        setErrorText("Data Updated Successfully")
+      }
       
+
     } catch (error) {
       // console.error("Error fetching options:", error);
     } finally {
@@ -326,9 +336,9 @@ const MasterConfigTaxStructure = () => {
           <button className="btn btn-primary" type="submit">
             Submit
           </button>
-          {/* <br /> */}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {enableErrorTextFlag && <label className="ErrorTextClass">{errorText}</label>}
+          <br />
+          
+          {enableErrorTextFlag && <label className={(enableSuccessTextFlag)?"SuccessTextClass":"ErrorTextClass"}>{errorText}</label>}
           <br />
           <br />
           <br />

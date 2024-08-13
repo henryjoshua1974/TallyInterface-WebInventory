@@ -16,6 +16,8 @@ const MasterConfigCategoryCostCenter = () => {
   const [selectedPrimaryCostCategoryName, setSelectedPrimaryCostCategoryName] = useState("");
   const [enableErrorTextFlag, setenableErrorTextFlag] = useState(false);
   const [errorText, setErrorText] = useState('');
+  const [enableSuccessTextFlag, setenableSuccessTextFlag] = useState(false);
+
 
   const apiurl =
     config.apiUrl.charAt(config.apiUrl.length - 1) != "/"
@@ -29,7 +31,8 @@ const MasterConfigCategoryCostCenter = () => {
     setSelectedPrimaryCostCategoryName('');
     setSelectedProperty(selectedValue);
     setenableErrorTextFlag(false);
-    
+    setenableSuccessTextFlag(false )
+
     if (selectedValue) {
       try {
         const response = await fetch(
@@ -64,7 +67,8 @@ const MasterConfigCategoryCostCenter = () => {
     setLedgerName('');
     setSelectedOrganization(selectedValue);
     setenableErrorTextFlag(false);
-    
+    setenableSuccessTextFlag(false )
+
     if (selectedValue) {
       try {
         const response = await fetch(
@@ -87,7 +91,8 @@ const MasterConfigCategoryCostCenter = () => {
       } finally {
       }
     } else {
-      setPropertyOptions([]); // Clear options if no valid selection
+      setPropertyOptions([]);
+      setCategoryOptions([]);
     }
   };
   const handleCategoryDropdownChange = async (event) => {
@@ -96,7 +101,8 @@ const MasterConfigCategoryCostCenter = () => {
     setSelectedPrimaryCostCategoryName('');
     setSelectedCategory(selectedValue);
     setenableErrorTextFlag(false);
-    
+    setenableSuccessTextFlag(false )
+
 if (selectedValue=='' ){
   return;
 }
@@ -148,6 +154,7 @@ if (selectedValue=='' ){
     e.preventDefault();
     
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false )
 
     if (selectedProperty == '') {
       setenableErrorTextFlag(true);
@@ -199,7 +206,11 @@ if (selectedValue=='' ){
 
       setenableErrorTextFlag(true);
       setErrorText(data.message)
-      
+      if (data.errorCode==0){
+        setenableSuccessTextFlag(true)
+        setErrorText("Data Updated Successfully")
+      }
+
     } catch (error) {
       // console.error("Error fetching options:", error);
     } finally {
@@ -209,7 +220,9 @@ if (selectedValue=='' ){
 
   return (
     <div className="MainContentCategoryCostCenter">
+      
       <div className="container mt-3">
+      
         <form className="FormDiv" onSubmit={handleSubmit}>
           <h5>Category Cost Center Configuration</h5>
           <br />
@@ -300,9 +313,9 @@ if (selectedValue=='' ){
           <button className="btn btn-primary" type="submit">
             Submit
           </button>
-          {/* <br /> */}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {enableErrorTextFlag && <label className="ErrorTextClass">{errorText}</label>}
+          <br />
+          
+          {enableErrorTextFlag && <label className={(enableSuccessTextFlag)?"SuccessTextClass":"ErrorTextClass"}>{errorText}</label>}
           <br />
           <br />
           <br />
@@ -310,7 +323,9 @@ if (selectedValue=='' ){
           <br />
           <br />
         </form>
+      
       </div>
+
     </div>
   );
 };

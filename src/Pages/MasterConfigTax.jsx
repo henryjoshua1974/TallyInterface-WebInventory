@@ -192,7 +192,6 @@ const MasterConfigTax = () => {
       );
 
       const data = await response.json();
-      console.log(data);
 
       setRows(data.tallyInterfaceInventoryMasterViewDetailsResponse);
     } catch (error) {
@@ -205,7 +204,7 @@ const MasterConfigTax = () => {
 
   const handleTaxDropdownChange = async (event) => {
     const selectedValue = event.target.value;
-    // setLoadTaxDetails(false);
+
     setSelectedTallyHead("");
     setSelectedTax(selectedValue);
 
@@ -218,17 +217,17 @@ const MasterConfigTax = () => {
 
   const handlePropertyDropdownChange = async (event) => {
     const selectedValue = event.target.value;
+    setRows([]);
+    setSelectedTax('');
     setSelectedTallyHead("");
     setSelectedProperty(selectedValue);
 
     setenableErrorTextFlag(false);
-
-    if (selectedValue == "") {
-      return;
-    }
+ 
     const jsonData = {
       PropertyCode: selectedValue,
     };
+
 
     if (selectedValue) {
       try {
@@ -263,6 +262,8 @@ const MasterConfigTax = () => {
 
   const handleOrganizationDropdownChange = async (event) => {
     const selectedValue = event.target.value;
+    setRows([]);
+    setSelectedTax('');
     setSelectedTallyHead("");
     setSelectedOrganization(selectedValue);
     setenableErrorTextFlag(false);
@@ -289,6 +290,7 @@ const MasterConfigTax = () => {
       }
     } else {
       setPropertyOptions([]); // Clear options if no valid selection
+      setTaxOptions([]);
     }
   };
 

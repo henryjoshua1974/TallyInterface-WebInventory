@@ -14,6 +14,7 @@ const MasterConfigCategory = () => {
   const [CategoryOptions, setCategoryOptions] = useState([]);
   const [LedgerName, setLedgerName] = useState("");
   const [enableErrorTextFlag, setenableErrorTextFlag] = useState(false);
+  const [enableSuccessTextFlag, setenableSuccessTextFlag] = useState(false);
   const [errorText, setErrorText] = useState('');
 
   const apiurl =
@@ -23,11 +24,13 @@ const MasterConfigCategory = () => {
 
   const handleCategoryDropdownChange = async (event) => {
     const selectedValue = event.target.value;
+    setLedgerName('');
     setSelectedTallyHead('');
     setSelectedCategory(selectedValue);
 
     setenableErrorTextFlag(false);
-    
+    setenableSuccessTextFlag(false )
+
 if (selectedValue=='' ){
   return;
 }
@@ -80,10 +83,11 @@ if (selectedValue=='' ){
 
   const handleOrganizationDropdownChange = async (event) => {
     const selectedValue = event.target.value;
+    setLedgerName('');
     setSelectedTallyHead('');
     setSelectedOrganization(selectedValue);
     setenableErrorTextFlag(false);
-    
+    setenableSuccessTextFlag(false )
     if (selectedValue) {
       try {
         const response = await fetch(
@@ -114,6 +118,7 @@ if (selectedValue=='' ){
     e.preventDefault();
     
     setenableErrorTextFlag(false);
+    setenableSuccessTextFlag(false )
     if (selectedCategory == '') {
       setenableErrorTextFlag(true);
       setErrorText('Must Select the Category Name')
@@ -126,8 +131,6 @@ if (selectedValue=='' ){
       return;
     }
 
-
-
     const jsonData = {
       PropertyCode: "0",
       ConfigType: "category",
@@ -137,8 +140,6 @@ if (selectedValue=='' ){
       Percentage: 0,
       OtherValue1: "",
     };
-
-    
 
     try {
       const response = await fetch(
@@ -159,7 +160,10 @@ if (selectedValue=='' ){
       // alert(data.message);
       setenableErrorTextFlag(true);
       setErrorText(data.message)
-      
+      if (data.errorCode==0){
+        setenableSuccessTextFlag(true)
+        setErrorText("Data Updated Successfully")
+      }
     } catch (error) {
       // console.error("Error fetching options:", error);
     } finally {
@@ -248,7 +252,8 @@ if (selectedValue=='' ){
             Submit
           </button>
           <br />
-          {enableErrorTextFlag && <label className="ErrorTextClass">{errorText}</label>}
+          {/* {enableErrorTextFlag && <label  className="ErrorTextClass">{errorText}</label>} */}
+          {enableErrorTextFlag && <label  className={(enableSuccessTextFlag)?"SuccessTextClass":"ErrorTextClass"}>{errorText}</label>}
         </form>
       </div>
     </div>
