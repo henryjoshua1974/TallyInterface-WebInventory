@@ -35,3 +35,13 @@
     color: rgb(113,115,115);
    
   }
+
+  .propertylistclass{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+  }
+
+  

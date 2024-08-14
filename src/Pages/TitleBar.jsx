@@ -14,12 +14,10 @@ const TitleBar = () => {
 
   const [showMenu, setShowMenu] = useState(false);
   const handleMouseEnter = () => {
-    console.log("mouseenter");
     setShowMenu(true);
   };
 
   const handleMouseLeave = () => {
-    console.log("mouseleave");
     setShowMenu(false);
   };
 

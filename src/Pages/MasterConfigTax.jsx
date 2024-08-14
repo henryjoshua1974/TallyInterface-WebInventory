@@ -173,7 +173,7 @@ const MasterConfigTax = () => {
       ConfigType: "tax",
       PromisLedgerName: objselectedTax,
     };
-    console.log(jsonData);
+    
     try {
       const response = await fetch(
         apiurl + "TallyInterfaceViewInventoryMaster",

@@ -46,7 +46,6 @@ function Login() {
           // Update state with the fetched data
           setData(data);
           setShowDataFetcher(true);
-          // console.log('showdatafetcher value:'+ showDataFetcher)
         })
         .catch(error => {
           // Handle errors here
@@ -62,7 +61,6 @@ function Login() {
 
 
   useEffect(() => {
-    // console.log('inside login'+showDataFetcher );
 
     if (showDataFetcher) {
 

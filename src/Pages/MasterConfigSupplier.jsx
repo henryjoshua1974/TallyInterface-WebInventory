@@ -60,7 +60,6 @@ const MasterConfigSupplier = () => {
         );
 
         const data = await response.json();
-        console.log(data);
         if (data.tallyInterfaceInventoryMasterViewDetailsResponse.length>0)
         {
           setLedgerName(
