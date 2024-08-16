@@ -148,7 +148,10 @@ function TransferData() {
 
       downloadJSON(data.xmlOutput, xmlFileName);
       if (data.dataMismatchError != "") {
-        alert(data.dataMismatchError);
+        // alert(data.dataMismatchError);
+        setExecTransferDataFlag(true);
+        setErrorText(data.dataMismatchError);
+
       } else {
         setShowMessageTextFlag(true);
         setMessageText(
