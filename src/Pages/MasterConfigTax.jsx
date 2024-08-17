@@ -107,7 +107,7 @@ const MasterConfigTax = () => {
 
     if (selectedProperty == '') {
       setenableErrorTextFlag(true);
-      setErrorText('Must Select the Property Name')
+      setErrorText('Must Select the Property')
       return;
     }
 

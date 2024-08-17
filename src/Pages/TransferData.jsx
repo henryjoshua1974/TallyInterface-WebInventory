@@ -84,6 +84,13 @@ function TransferData() {
     setExecTransferDataFlag(false);
     setShowMessageTextFlag(false);
 
+    if (selectedOrganization == '') {
+      setExecTransferDataFlag(true);
+      setErrorText('Must Select the Organization Name')
+      return;
+    }
+
+
     if (selectedProperty == "") {
       setExecTransferDataFlag(true);
       setErrorText("Must Select the Property");
