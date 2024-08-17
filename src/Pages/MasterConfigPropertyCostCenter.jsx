@@ -116,6 +116,12 @@ const MasterConfigPropertyCostCenter = () => {
 
     setenableErrorTextFlag(false);
     setenableSuccessTextFlag(false);
+    
+    if (selectedOrganization == '') {
+      setenableErrorTextFlag(true);
+      setErrorText('Must Select the Organization Name')
+      return;
+    }
 
     if (selectedProperty == "") {
       setenableErrorTextFlag(true);

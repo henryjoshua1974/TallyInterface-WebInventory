@@ -119,6 +119,13 @@ if (selectedValue=='' ){
     
     setenableErrorTextFlag(false);
     setenableSuccessTextFlag(false )
+    if (selectedOrganization == '') {
+      setenableErrorTextFlag(true);
+      setErrorText('Must Select the Organization Name')
+      return;
+    }
+
+    
     if (selectedCategory == '') {
       setenableErrorTextFlag(true);
       setErrorText('Must Select the Category Name')

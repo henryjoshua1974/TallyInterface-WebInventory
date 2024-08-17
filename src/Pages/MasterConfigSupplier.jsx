@@ -125,6 +125,12 @@ const MasterConfigSupplier = () => {
     setenableErrorTextFlag(false);
     setenableSuccessTextFlag(false)
 
+    if (selectedOrganization == '') {
+      setenableErrorTextFlag(true);
+      setErrorText('Must Select the Organization Name')
+      return;
+    }
+
     if (selectedSupplier == '') {
       setenableErrorTextFlag(true);
       setErrorText('Must Select the Supplier Name')

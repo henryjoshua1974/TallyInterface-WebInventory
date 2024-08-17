@@ -98,6 +98,26 @@ const MasterConfigTax = () => {
 
   const handleInsert = async () => {
     setenableErrorTextFlag(false);
+
+    if (selectedOrganization == '') {
+      setenableErrorTextFlag(true);
+      setErrorText('Must Select the Organization Name')
+      return;
+    }
+
+    if (selectedProperty == '') {
+      setenableErrorTextFlag(true);
+      setErrorText('Must Select the Property Name')
+      return;
+    }
+
+    if (selectedTax == '') {
+      setenableErrorTextFlag(true);
+      setErrorText('Must Select the Tax')
+      return;
+    }
+
+
     if (newRow.percentage == "") {
       setenableErrorTextFlag(true);
       setErrorText("Percentage is required");
@@ -204,6 +224,10 @@ const MasterConfigTax = () => {
 
   const handleTaxDropdownChange = async (event) => {
     const selectedValue = event.target.value;
+    setenableErrorTextFlag(false);
+    newRow.percentage='';
+    newRow.tallyLedgerName = '';
+    newRow.tallyHead='';
 
     setSelectedTallyHead("");
     setSelectedTax(selectedValue);

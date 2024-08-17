@@ -156,6 +156,12 @@ if (selectedValue=='' ){
     setenableErrorTextFlag(false);
     setenableSuccessTextFlag(false )
 
+    if (selectedOrganization == '') {
+      setenableErrorTextFlag(true);
+      setErrorText('Must Select the Organization Name')
+      return;
+    }
+
     if (selectedProperty == '') {
       setenableErrorTextFlag(true);
       setErrorText('Must Select the Property Name')
