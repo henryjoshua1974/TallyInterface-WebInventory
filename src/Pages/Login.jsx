@@ -12,6 +12,8 @@ function Login() {
   const [execAPIFlag, setexecAPIFlag] = useState(false);
   const [valueUserID, setValueUserID] = useState('VRO@BNG');
   const [valuePassword, setValuePassword] = useState('vro@bng_020422');
+  // const [valueUserID, setValueUserID] = useState('');
+  // const [valuePassword, setValuePassword] = useState('');
   const [logindata, setData] = useState(null);
   const [errorFlag, setErrorflag] = useState(false);
   const [loginErrorFlag, setLoginErrorflag] = useState(false);
