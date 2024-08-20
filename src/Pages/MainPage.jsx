@@ -26,8 +26,8 @@ export default function MainPage() {
 
   const handleExpiry = () => {
     if (publicKey == '' )
-      // navigate(`/`);
-    navigate(`/Login`);
+      navigate(`/`);
+    // navigate(`/Login`);
 
   }
 
